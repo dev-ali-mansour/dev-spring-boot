@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 
 class DemoController @Autowired constructor(
-    @Qualifier("cricketCoach") private val coach: Coach,
+    @Qualifier("aquatic") private val coach: Coach,
 //    @Qualifier("cricketCoach") private val anotherCoach: Coach,
 ) {
 
