@@ -22,6 +22,8 @@ class DemoController @Autowired constructor(private val coach: Coach) {
 
     /*
     // Field Injection
+    // Not Recommended by the spring.io development team
+    // because it makes the code harder to unit test
     @Autowired
     private lateinit var coach: Coach
     */
