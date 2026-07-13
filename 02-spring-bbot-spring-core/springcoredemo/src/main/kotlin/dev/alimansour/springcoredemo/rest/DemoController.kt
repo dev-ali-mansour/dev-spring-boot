@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 
 class DemoController @Autowired constructor(
-    @Qualifier("cricketCoach") private val coach: Coach
+    @Qualifier("cricketCoach") private val coach: Coach,
+    @Qualifier("cricketCoach") private val anotherCoach: Coach,
 ) {
 
     /*
@@ -38,5 +39,10 @@ class DemoController @Autowired constructor(
     @GetMapping("/dailyworkout")
     fun getDailyWorkout(): String {
         return coach.getDailyWorkout()
+    }
+
+    @GetMapping("/check")
+    fun check(): String {
+        return "Comparing beans: myCoach == anotherCoach, ${coach == anotherCoach}"
     }
 }
