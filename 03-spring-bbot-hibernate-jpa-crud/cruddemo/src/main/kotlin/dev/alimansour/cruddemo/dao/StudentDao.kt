@@ -14,4 +14,6 @@ interface StudentDao {
     fun update(student: Student)
 
     fun delete(id: Long)
+
+    fun deleteAll(): Int
 }

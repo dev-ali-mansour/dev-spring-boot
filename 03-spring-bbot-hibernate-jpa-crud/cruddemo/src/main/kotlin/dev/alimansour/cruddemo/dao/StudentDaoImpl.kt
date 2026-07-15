@@ -56,4 +56,12 @@ class StudentDaoImpl(
 //            .setParameter("id", id)
 //            .executeUpdate()
     }
+
+    @Transactional
+    override fun deleteAll(): Int {
+        val numRowsDeleted = entityManager
+            .createQuery("DELETE FROM Student")
+            .executeUpdate()
+        return numRowsDeleted
+    }
 }
