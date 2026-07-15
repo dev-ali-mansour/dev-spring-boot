@@ -14,8 +14,30 @@ class CruddemoApplication {
     fun commandLineRunner(studentDao: StudentDao): CommandLineRunner {
         return CommandLineRunner { runner ->
 //            createStudent(studentDao)
-            createMultipleStudents(studentDao)
+//            createMultipleStudents(studentDao)
+            readStudent(studentDao)
         }
+    }
+
+    private fun readStudent(studentDao: StudentDao) {
+        // create a student object
+        println("Creating new student object ...")
+        val student = Student("Daffy", "Duck", "daffy.duck@gmail.com")
+
+        // save the student
+        println("Saving the student ...")
+        studentDao.save(student)
+
+        // display id of the saved student
+        val id = student.id
+        println("Saved student. Generated id: $id")
+
+        // retrieve student based on id: primary key
+        println("Retrieving student with id: $id")
+        val retrievedStudent = studentDao.findById(id)
+
+        // display student
+        println("Found the student: $retrievedStudent")
     }
 
     private fun createMultipleStudents(studentDao: StudentDao) {
