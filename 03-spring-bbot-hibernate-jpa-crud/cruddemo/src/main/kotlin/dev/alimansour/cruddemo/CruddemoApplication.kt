@@ -17,9 +17,27 @@ class CruddemoApplication {
 //            createMultipleStudents(studentDao)
 //            readStudent(studentDao)
 //            queryForStudents(studentDao)
-            queryForStudentsByLastName(studentDao)
-
+//            queryForStudentsByLastName(studentDao)
+            updateStudent(studentDao)
         }
+    }
+
+    private fun updateStudent(studentDao: StudentDao) {
+        // retrieve student based on the id: primary key
+        val studentId: Long = 1
+        val student = studentDao.findById(studentId)
+        println("Found student: $student")
+
+        // update details of the student
+        println("Updating student ...")
+        student.firstName = "John"
+
+        // update the student
+        studentDao.update(student)
+
+        // display the updated student
+        val updatedStudent = studentDao.findById(studentId)
+        println("Updated student: $updatedStudent")
     }
 
     private fun queryForStudentsByLastName(studentDao: StudentDao) {
