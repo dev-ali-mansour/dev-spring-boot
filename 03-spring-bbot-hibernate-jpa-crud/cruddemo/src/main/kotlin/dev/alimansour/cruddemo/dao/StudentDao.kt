@@ -9,4 +9,6 @@ interface StudentDao {
 
     fun findAll(): List<Student>
 
+    fun findByLastName(value: String): List<Student>
+
 }
