@@ -12,4 +12,6 @@ interface StudentDao {
     fun findByLastName(value: String): List<Student>
 
     fun update(student: Student)
+
+    fun delete(id: Long)
 }

@@ -41,4 +41,19 @@ class StudentDaoImpl(
     override fun update(student: Student) {
         entityManager.merge(student)
     }
+
+    @Transactional
+    override fun delete(id: Long) {
+        // retrieve the student
+        val student = entityManager.find(Student::class.java, id)
+
+        //delete the student
+        entityManager.remove(student)
+
+        // Alternative approach
+//        entityManager
+//            .createQuery("DELETE FROM Student WHERE id=:id")
+//            .setParameter("id", id)
+//            .executeUpdate()
+    }
 }
