@@ -14,13 +14,13 @@ class CruddemoApplication {
     fun commandLineRunner(studentDao: StudentDao): CommandLineRunner {
         return CommandLineRunner { runner ->
 //            createStudent(studentDao)
-//            createMultipleStudents(studentDao)
+            createMultipleStudents(studentDao)
 //            readStudent(studentDao)
 //            queryForStudents(studentDao)
 //            queryForStudentsByLastName(studentDao)
 //            updateStudent(studentDao)
 //            deleteStudent(studentDao)
-            deleteAllStudents(studentDao)
+//            deleteAllStudents(studentDao)
         }
     }
 
