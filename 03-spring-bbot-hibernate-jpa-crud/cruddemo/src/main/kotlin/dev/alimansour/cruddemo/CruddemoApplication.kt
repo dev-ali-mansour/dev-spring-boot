@@ -16,7 +16,18 @@ class CruddemoApplication {
 //            createStudent(studentDao)
 //            createMultipleStudents(studentDao)
 //            readStudent(studentDao)
-            queryForStudents(studentDao)
+//            queryForStudents(studentDao)
+            queryForStudentsByLastName(studentDao)
+
+        }
+    }
+
+    private fun queryForStudentsByLastName(studentDao: StudentDao) {
+        // get a list of students
+        val students = studentDao.findByLastName("Duck")
+        // display list of students
+        for (student in students) {
+            println(student)
         }
     }
 
