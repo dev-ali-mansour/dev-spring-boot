@@ -15,7 +15,18 @@ class CruddemoApplication {
         return CommandLineRunner { runner ->
 //            createStudent(studentDao)
 //            createMultipleStudents(studentDao)
-            readStudent(studentDao)
+//            readStudent(studentDao)
+            queryForStudents(studentDao)
+        }
+    }
+
+    private fun queryForStudents(studentDao: StudentDao) {
+        // get a list of students
+        val students = studentDao.findAll()
+
+        // display list of students
+        for (student in students) {
+            println(student)
         }
     }
 
