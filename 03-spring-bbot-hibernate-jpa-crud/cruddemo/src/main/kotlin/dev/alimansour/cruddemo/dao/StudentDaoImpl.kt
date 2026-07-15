@@ -36,4 +36,9 @@ class StudentDaoImpl(
         // return query results
         return query.resultList
     }
+
+    @Transactional
+    override fun update(student: Student) {
+        entityManager.merge(student)
+    }
 }
