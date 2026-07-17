@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
@@ -13,12 +14,12 @@ class HelloWorldController {
         return "helloworld-form"
     }
 
-    @GetMapping("/processForm")
+    @RequestMapping("/processForm")
     fun processForm(): String {
         return "helloworld"
     }
 
-    @GetMapping("processFormVersionTwo")
+    @RequestMapping("processFormVersionTwo")
     fun letsShoutDude(request: HttpServletRequest, model: Model): String {
         var name = request.getParameter("studentName")
         name = name.uppercase()
@@ -30,7 +31,7 @@ class HelloWorldController {
         return "helloworld"
     }
 
-    @GetMapping("processFormVersionThree")
+    @RequestMapping("processFormVersionThree")
     fun processFromVersionThree(
         @RequestParam("studentName") name: String,
         model: Model
