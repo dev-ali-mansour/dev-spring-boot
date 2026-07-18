@@ -17,6 +17,9 @@ class StudentController {
     @Value($$"${languages}")
     val languages: List<String> = listOf()
 
+    @Value($$"${systems}")
+    val systems: List<String> = listOf()
+
     @GetMapping("/showStudentForm")
     fun showForm(model: Model): String {
         val student = Student()
@@ -24,6 +27,7 @@ class StudentController {
         model.addAttribute("student", student)
         model.addAttribute("countries", countries)
         model.addAttribute("languages", languages)
+        model.addAttribute("systems", systems)
 
         return "student-form"
     }
