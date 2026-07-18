@@ -5,4 +5,5 @@ class Student(
     val lastName: String = "",
     val country: String = "",
     val favoriteLanguage: String = "",
+    val favoriteSystems: List<String> = listOf(),
 )
