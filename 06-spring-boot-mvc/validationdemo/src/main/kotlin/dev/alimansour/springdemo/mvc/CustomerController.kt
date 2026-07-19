@@ -31,6 +31,9 @@ class CustomerController {
         bindingResult: BindingResult,
     ): String {
         println("Last name: |${customer.lastName}|")
+
+        println("BindingResult: $bindingResult")
+
         if (bindingResult.hasErrors()) {
             return "customer-form"
         } else {
