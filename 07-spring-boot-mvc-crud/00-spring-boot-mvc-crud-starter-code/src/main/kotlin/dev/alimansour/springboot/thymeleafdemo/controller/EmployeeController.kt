@@ -31,6 +31,18 @@ class EmployeeController(employeesService: EmployeeService, private val employee
         return "employees/employee-form"
     }
 
+    @GetMapping("/showFormForUpdate")
+    fun showFormForUpdate(
+        @RequestParam("employeeId") employeeId: Long,
+        model: Model
+    ): String {
+        val employee = employeeService.findById(employeeId)
+
+        model.addAttribute("employee", employee)
+
+        return "employees/employee-form"
+    }
+
     @PostMapping("/save")
     fun saveEmployee(@ModelAttribute("employee") employee: Employee): String {
 
@@ -38,5 +50,4 @@ class EmployeeController(employeesService: EmployeeService, private val employee
 
         return "redirect:/employees/list"
     }
-
 }
