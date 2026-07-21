@@ -14,4 +14,9 @@ class DemoController {
     fun showLeaders(): String {
         return "leaders"
     }
+
+    @GetMapping("systems")
+    fun showSystems(): String {
+        return "systems"
+    }
 }
