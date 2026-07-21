@@ -37,12 +37,14 @@ class DemoSecurityConfig {
         http.authorizeHttpRequests { authRequest ->
             authRequest
                 .anyRequest().authenticated()
-        }.formLogin { form ->
-            form
-                .loginPage("/showMyLoginPage")
-                .loginProcessingUrl("/authenticateTheUser")
-                .permitAll()
         }
+            .formLogin { form ->
+                form
+                    .loginPage("/showMyLoginPage")
+                    .loginProcessingUrl("/authenticateTheUser")
+                    .permitAll()
+            }
+            .logout { logout -> logout.permitAll() }
 
         return http.build()
     }
