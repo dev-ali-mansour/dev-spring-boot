@@ -1,0 +1,12 @@
+package dev.alimansour.springboot.demosecurity.controller
+
+import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
+
+@Controller
+class DemoController {
+    @GetMapping("/")
+    fun showHome(): String {
+        return "home"
+    }
+}
