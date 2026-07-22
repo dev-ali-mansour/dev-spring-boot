@@ -1,6 +1,7 @@
 package dev.alimansour.cruddemo
 
 import dev.alimansour.cruddemo.dao.AppDAO
+import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
 import org.springframework.boot.CommandLineRunner
@@ -17,8 +18,31 @@ class CruddemoApplication {
 //            findInstructor(appDAO)
 //            deleteInstructor(appDAO)
 //            findInstructorDetail(appDAO)
-            deleteInstructorDetail(appDAO)
+//            deleteInstructorDetail(appDAO)
+            createInstructorWithCourses(appDAO)
         }
+    }
+
+    private fun createInstructorWithCourses(appDAO: AppDAO) {
+        val instructor = Instructor(firstName = "Susan", lastName = "Public", email = "susan.public@luv2code.com")
+        val instructorDetail = InstructorDetail(
+            youtubeChannel = "https://www.luv2code.com",
+            hobby = "Video Games"
+        )
+
+        instructor.instructorDetail = instructorDetail
+
+        val course1 = Course(title = "Air Guitar - The Ultimate Guide")
+        val course2 = Course(title = "The Pinball Masterclass")
+
+        instructor.add(course1)
+        instructor.add(course2)
+
+        println("Saving instructor: $instructor")
+        println("The courses: ${instructor.courses}")
+        appDAO.save(instructor)
+
+        println("Done!")
     }
 
     private fun deleteInstructorDetail(appDAO: AppDAO) {
