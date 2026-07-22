@@ -12,4 +12,8 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
     override fun save(instructor: Instructor) {
         entityManager.persist(instructor)
     }
+
+    override fun findInstructorById(id: Int): Instructor? {
+        return entityManager.find(Instructor::class.java, id)
+    }
 }

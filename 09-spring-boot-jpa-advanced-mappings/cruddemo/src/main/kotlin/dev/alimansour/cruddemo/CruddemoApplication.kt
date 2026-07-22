@@ -13,8 +13,17 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-            createInstructor(appDAO)
+//            createInstructor(appDAO)
+            findInstructor(appDAO)
         }
+    }
+
+    private fun findInstructor(appDAO: AppDAO) {
+        val id = 2
+        println("Finding instructor id $id")
+        val instructor = appDAO.findInstructorById(id)
+        println("Instructor: $instructor")
+        println("The associated instructorDetail only: ${instructor?.instructorDetail}")
     }
 
     private fun createInstructor(appDAO: AppDAO) {
