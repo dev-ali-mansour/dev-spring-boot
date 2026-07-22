@@ -23,6 +23,7 @@ class Instructor(
 
     @OneToMany(
         mappedBy = "instructor",
+        fetch = FetchType.EAGER,
         cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH]
     )
     val courses: MutableList<Course> = mutableListOf()

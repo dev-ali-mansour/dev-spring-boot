@@ -19,8 +19,19 @@ class CruddemoApplication {
 //            deleteInstructor(appDAO)
 //            findInstructorDetail(appDAO)
 //            deleteInstructorDetail(appDAO)
-            createInstructorWithCourses(appDAO)
+//            createInstructorWithCourses(appDAO)
+            findInstructorWithCourses(appDAO)
         }
+    }
+
+    private fun findInstructorWithCourses(appDAO: AppDAO) {
+        val id = 1
+        println("Finding instructor by id: $id")
+
+        val instructor = appDAO.findInstructorById(id)
+
+        println("Instructor: $instructor")
+        println("The associated courses: ${instructor?.courses}")
     }
 
     private fun createInstructorWithCourses(appDAO: AppDAO) {
