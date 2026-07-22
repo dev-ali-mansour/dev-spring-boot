@@ -13,8 +13,10 @@ class InstructorDetail(
     var youtubeChannel: String = "",
     @Column(name = "hobby")
     var hobby: String = "",
+    @OneToOne(mappedBy = "instructorDetail", cascade = [CascadeType.ALL])
+    var instructor: Instructor? = null,
 ) {
     override fun toString(): String {
-        return "InstructionDetail{id=$id, youtubeChannel='$youtubeChannel', hobby='$hobby'}"
+        return "InstructionDetail{id=$id, youtubeChannel='$youtubeChannel', hobby='$hobby', instructor='$instructor')}"
     }
 }

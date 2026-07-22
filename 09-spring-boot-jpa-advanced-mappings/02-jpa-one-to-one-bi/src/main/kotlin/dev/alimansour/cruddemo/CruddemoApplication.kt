@@ -14,9 +14,17 @@ class CruddemoApplication {
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
 //            createInstructor(appDAO)
-            findInstructor(appDAO)
-            deleteInstructor(appDAO)
+//            findInstructor(appDAO)
+//            deleteInstructor(appDAO)
+            findInstructorDetail(appDAO)
         }
+    }
+
+    private fun findInstructorDetail(appDAO: AppDAO) {
+        val id = 2
+        val instructorDetail = appDAO.findInstructorDetailById(id)
+        println("instructorDetail: $instructorDetail")
+        println("The associated instructor is ${instructorDetail?.instructor}")
     }
 
     private fun deleteInstructor(appDAO: AppDAO) {

@@ -1,6 +1,7 @@
 package dev.alimansour.cruddemo.dao
 
 import dev.alimansour.cruddemo.entity.Instructor
+import dev.alimansour.cruddemo.entity.InstructorDetail
 import jakarta.persistence.EntityManager
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Repository
@@ -21,5 +22,9 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
     override fun deleteInstructorById(id: Int) {
         val instructor = entityManager.find(Instructor::class.java, id)
         entityManager.remove(instructor)
+    }
+
+    override fun findInstructorDetailById(id: Int): InstructorDetail? {
+        return entityManager.find(InstructorDetail::class.java, id)
     }
 }

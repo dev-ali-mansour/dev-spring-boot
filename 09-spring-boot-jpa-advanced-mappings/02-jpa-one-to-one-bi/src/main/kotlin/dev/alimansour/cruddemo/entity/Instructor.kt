@@ -17,7 +17,7 @@ class Instructor(
     var email: String,
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "instructor_detail_id")
-    var instructorDetail: InstructorDetail = InstructorDetail(),
+    var instructorDetail: InstructorDetail? = null,
 ) {
     override fun toString(): String {
         return "Instructor{" +
