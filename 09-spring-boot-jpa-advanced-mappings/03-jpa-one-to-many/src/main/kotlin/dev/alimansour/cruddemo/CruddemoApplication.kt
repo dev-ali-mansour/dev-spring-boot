@@ -20,8 +20,29 @@ class CruddemoApplication {
 //            findInstructorDetail(appDAO)
 //            deleteInstructorDetail(appDAO)
 //            createInstructorWithCourses(appDAO)
-            findInstructorWithCourses(appDAO)
+//            findInstructorWithCourses(appDAO)
+            findCoursesByInstructor(appDAO)
         }
+    }
+
+    private fun findCoursesByInstructor(appDAO: AppDAO) {
+        val id = 1
+        println("Finding instructor by id: $id")
+
+        val instructor = appDAO.findInstructorById(id)
+
+        println("Instructor: $instructor")
+
+        println("Finding courses for constructor id: $id")
+        val courses = appDAO.findCoursesByInstructorId(id)
+
+        // Replacing the collection entirely is considered an antipattern in JPA
+        // Todo Replace this approach with `JoinFetch`
+        instructor?.courses = courses.toMutableList()
+
+        println("The associated courses: ${instructor?.courses}")
+
+        println("Done!")
     }
 
     private fun findInstructorWithCourses(appDAO: AppDAO) {

@@ -1,5 +1,6 @@
 package dev.alimansour.cruddemo.dao
 
+import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
 
@@ -9,4 +10,5 @@ interface AppDAO {
     fun deleteInstructorById(id: Int)
     fun findInstructorDetailById(id: Int): InstructorDetail?
     fun deleteInstructorDetailById(id: Int)
+    fun findCoursesByInstructorId(instructorId: Int): List<Course>
 }

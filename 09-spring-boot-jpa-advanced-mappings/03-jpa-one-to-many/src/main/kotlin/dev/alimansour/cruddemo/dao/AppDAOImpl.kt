@@ -1,5 +1,6 @@
 package dev.alimansour.cruddemo.dao
 
+import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
 import jakarta.persistence.EntityManager
@@ -36,5 +37,15 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
         instructorDetail?.instructor?.instructorDetail = null
 
         entityManager.remove(instructorDetail)
+    }
+
+    override fun findCoursesByInstructorId(instructorId: Int): List<Course> {
+        val query = entityManager.createQuery(
+            "FROM Course WHERE instructor.id=:data",
+            Course::class.java
+        )
+        query.setParameter("data", instructorId)
+
+        return query.resultList
     }
 }

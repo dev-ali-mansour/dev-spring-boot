@@ -23,10 +23,10 @@ class Instructor(
 
     @OneToMany(
         mappedBy = "instructor",
-        fetch = FetchType.EAGER,
+        fetch = FetchType.LAZY,
         cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH]
     )
-    val courses: MutableList<Course> = mutableListOf()
+    var courses: MutableList<Course> = mutableListOf()
 
     override fun toString(): String {
         return "Instructor{" +
