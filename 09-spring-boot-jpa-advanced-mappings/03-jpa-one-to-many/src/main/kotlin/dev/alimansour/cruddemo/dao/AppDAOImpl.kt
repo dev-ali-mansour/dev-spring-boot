@@ -61,4 +61,9 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
         return query.singleResult
     }
+
+    @Transactional
+    override fun update(instructor: Instructor) {
+        entityManager.merge(instructor)
+    }
 }
