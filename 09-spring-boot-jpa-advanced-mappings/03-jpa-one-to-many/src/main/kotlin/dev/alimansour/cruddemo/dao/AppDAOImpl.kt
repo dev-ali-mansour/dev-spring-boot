@@ -53,6 +53,7 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
         val query = entityManager.createQuery(
             "SELECT i FROM Instructor i " +
                     "JOIN FETCH i.courses " +
+                    "JOIN FETCH i.instructorDetail " +
                     "WHERE i.id=:data",
             Instructor::class.java
         )
