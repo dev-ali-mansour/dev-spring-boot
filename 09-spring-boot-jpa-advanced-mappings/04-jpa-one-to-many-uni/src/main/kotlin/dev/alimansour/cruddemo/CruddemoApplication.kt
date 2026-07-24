@@ -15,7 +15,21 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-            createCourseAndReviews(appDAO)
+//            createCourseAndReviews(appDAO)
+            retrieveCourseAndReviews(appDAO)
+        }
+    }
+
+    private fun retrieveCourseAndReviews(appDAO: AppDAO) {
+        val id = 10
+
+        val course = appDAO.findCourseAndReviewsByCourseId(id)
+        course?.let { foundCourse ->
+            println(foundCourse)
+
+            println(foundCourse.reviews)
+
+            println("Done!")
         }
     }
 

@@ -92,4 +92,15 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
     override fun save(course: Course) {
         entityManager.persist(course)
     }
+
+    override fun findCourseAndReviewsByCourseId(courseId: Int): Course? {
+        val query = entityManager.createQuery(
+            "select c from Course c " +
+                    "join fetch c.reviews " +
+                    "where c.id=:data",
+            Course::class.java
+        )
+        query.setParameter("data", courseId)
+        return query.singleResult
+    }
 }
