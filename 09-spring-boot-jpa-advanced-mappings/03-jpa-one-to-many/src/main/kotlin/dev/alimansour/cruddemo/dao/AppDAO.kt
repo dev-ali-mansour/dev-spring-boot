@@ -15,4 +15,5 @@ interface AppDAO {
     fun update(instructor: Instructor)
     fun findCourseById(id: Int): Course?
     fun update(course: Course)
+    fun deleteCourseById(id: Int)
 }

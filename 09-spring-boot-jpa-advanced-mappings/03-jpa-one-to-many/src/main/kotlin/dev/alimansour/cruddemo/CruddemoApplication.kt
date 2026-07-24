@@ -16,7 +16,7 @@ class CruddemoApplication {
         return CommandLineRunner {
 //            createInstructor(appDAO)
 //            findInstructor(appDAO)
-            deleteInstructor(appDAO)
+//            deleteInstructor(appDAO)
 //            findInstructorDetail(appDAO)
 //            deleteInstructorDetail(appDAO)
 //            createInstructorWithCourses(appDAO)
@@ -25,6 +25,21 @@ class CruddemoApplication {
 //            findInstructorWithCoursesJoinFetch(appDAO)
 //            updateInstructor(appDAO)
 //            updateCourse(appDAO)
+            deleteCourse(appDAO)
+        }
+    }
+
+    private fun deleteCourse(appDAO: AppDAO) {
+        val id = 10
+
+        println("Finding course with id: $id")
+        val course = appDAO.findCourseById(id)
+
+        course?.let {
+            println("Deleting course with id: $id")
+            appDAO.deleteCourseById(id)
+
+            print("Done!")
         }
     }
 

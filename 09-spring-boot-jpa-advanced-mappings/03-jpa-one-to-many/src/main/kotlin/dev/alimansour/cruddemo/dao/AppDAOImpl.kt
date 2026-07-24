@@ -80,4 +80,11 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
     override fun update(course: Course) {
         entityManager.merge(course)
     }
+
+    @Transactional
+    override fun deleteCourseById(id: Int) {
+        val course = entityManager.find(Course::class.java, id)
+
+        entityManager.remove(course)
+    }
 }
