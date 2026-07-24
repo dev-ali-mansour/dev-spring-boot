@@ -103,4 +103,15 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
         query.setParameter("data", courseId)
         return query.singleResult
     }
+
+    override fun findCourseAndStudentsByCourseId(courseId: Int): Course? {
+        val query = entityManager.createQuery(
+            "select c from Course c " +
+                    "join fetch c.students " +
+                    "where c.id=:data", Course::class.java
+        )
+        query.setParameter("data", courseId)
+
+        return query.singleResult
+    }
 }

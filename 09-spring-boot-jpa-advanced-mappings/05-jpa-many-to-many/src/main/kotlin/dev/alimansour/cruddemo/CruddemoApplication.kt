@@ -12,7 +12,20 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-            createCourseAndStudent(appDAO)
+//            createCourseAndStudent(appDAO)
+            findCourseAndStudents(appDAO)
+        }
+    }
+
+    private fun findCourseAndStudents(appDAO: AppDAO) {
+        val id = 10
+        val course = appDAO.findCourseAndStudentsByCourseId(id)
+
+        course?.let { loaded ->
+            println("Loaded course:$loaded")
+            println("Students: ${loaded.students}")
+
+            println("Done!")
         }
     }
 
