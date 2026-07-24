@@ -15,9 +15,7 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-//            createCourseAndReviews(appDAO)
-//            retrieveCourseAndReviews(appDAO)
-            deleteCourseAndReviews(appDAO)
+
         }
     }
 
