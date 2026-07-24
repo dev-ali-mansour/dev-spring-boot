@@ -14,7 +14,28 @@ class CruddemoApplication {
         return CommandLineRunner {
 //            createCourseAndStudent(appDAO)
 //            findCourseAndStudents(appDAO)
-            findStudentAndCourses(appDAO)
+//            findStudentAndCourses(appDAO)
+            addMoreCoursesForStudent(appDAO)
+        }
+    }
+
+    private fun addMoreCoursesForStudent(appDAO: AppDAO) {
+        val id = 2
+        val student = appDAO.findStudentAndCoursesByStudentId(id)
+
+        val course1 = Course(title = "Rubik's Cube - How to Speed Cube")
+        val course2 = Course(title = "Atari 2600 - Game Development")
+
+        student?.let { student ->
+            student.addCourse(course1)
+            student.addCourse(course2)
+
+            println("Updating student : $student")
+            println("The attached courses: ${student.courses}")
+
+            appDAO.update(student)
+
+            println("Done!")
         }
     }
 

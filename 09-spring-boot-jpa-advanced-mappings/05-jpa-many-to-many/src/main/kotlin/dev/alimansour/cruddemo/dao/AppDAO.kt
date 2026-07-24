@@ -21,4 +21,5 @@ interface AppDAO {
     fun findCourseAndReviewsByCourseId(courseId: Int): Course?
     fun findCourseAndStudentsByCourseId(courseId: Int): Course?
     fun findStudentAndCoursesByStudentId(studentId: Int): Student?
+    fun update(student: Student)
 }

@@ -47,8 +47,7 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
     override fun findCoursesByInstructorId(instructorId: Int): List<Course> {
         val query = entityManager.createQuery(
-            "FROM Course WHERE instructor.id=:data",
-            Course::class.java
+            "FROM Course WHERE instructor.id=:data", Course::class.java
         )
         query.setParameter("data", instructorId)
 
@@ -57,10 +56,7 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
     override fun findInstructorByIdJoinFetch(instructorId: Int): Instructor? {
         val query = entityManager.createQuery(
-            "SELECT i FROM Instructor i " +
-                    "JOIN FETCH i.courses " +
-                    "JOIN FETCH i.instructorDetail " +
-                    "WHERE i.id=:data",
+            "SELECT i FROM Instructor i " + "JOIN FETCH i.courses " + "JOIN FETCH i.instructorDetail " + "WHERE i.id=:data",
             Instructor::class.java
         )
         query.setParameter("data", instructorId)
@@ -96,10 +92,7 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
     override fun findCourseAndReviewsByCourseId(courseId: Int): Course? {
         val query = entityManager.createQuery(
-            "select c from Course c " +
-                    "join fetch c.reviews " +
-                    "where c.id=:data",
-            Course::class.java
+            "select c from Course c " + "join fetch c.reviews " + "where c.id=:data", Course::class.java
         )
         query.setParameter("data", courseId)
         return query.singleResult
@@ -107,9 +100,7 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
     override fun findCourseAndStudentsByCourseId(courseId: Int): Course? {
         val query = entityManager.createQuery(
-            "select c from Course c " +
-                    "join fetch c.students " +
-                    "where c.id=:data", Course::class.java
+            "select c from Course c " + "join fetch c.students " + "where c.id=:data", Course::class.java
         )
         query.setParameter("data", courseId)
 
@@ -118,12 +109,15 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
     override fun findStudentAndCoursesByStudentId(studentId: Int): Student? {
         val query = entityManager.createQuery(
-            "select s from Student s " +
-                    "join fetch s.courses " +
-                    "where s.id=:data", Student::class.java
+            "select s from Student s " + "join fetch s.courses " + "where s.id=:data", Student::class.java
         )
         query.setParameter("data", studentId)
 
         return query.singleResult
+    }
+
+    @Transactional
+    override fun update(student: Student) {
+        entityManager.merge(student)
     }
 }
