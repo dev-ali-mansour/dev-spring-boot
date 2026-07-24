@@ -4,6 +4,7 @@ import dev.alimansour.cruddemo.dao.AppDAO
 import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
+import dev.alimansour.cruddemo.entity.Review
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -14,8 +15,24 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-
+            createCourseAndReviews(appDAO)
         }
+    }
+
+    private fun createCourseAndReviews(appDAO: AppDAO) {
+        val course = Course(title = "Pacman - How To Score One Million Points")
+
+        course.add(Review(comment = "Great course ... loved it!"))
+        course.add(Review(comment = "Cool course, job well done."))
+        course.add(Review(comment = "What a dumb course, you are an idiot!"))
+
+        println("Saving the course")
+        println(course)
+        println(course.reviews)
+
+        appDAO.save(course)
+
+        println("Done!")
     }
 
     private fun deleteCourse(appDAO: AppDAO) {

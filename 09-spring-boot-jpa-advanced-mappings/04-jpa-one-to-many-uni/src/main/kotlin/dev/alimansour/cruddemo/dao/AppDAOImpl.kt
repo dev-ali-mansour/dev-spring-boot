@@ -87,4 +87,9 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
 
         entityManager.remove(course)
     }
+
+    @Transactional
+    override fun save(course: Course) {
+        entityManager.persist(course)
+    }
 }
