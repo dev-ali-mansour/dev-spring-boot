@@ -23,7 +23,24 @@ class CruddemoApplication {
 //            findInstructorWithCourses(appDAO)
 //            findCoursesByInstructor(appDAO)
 //            findInstructorWithCoursesJoinFetch(appDAO)
-            updateInstructor(appDAO)
+//            updateInstructor(appDAO)
+            updateCourse(appDAO)
+        }
+    }
+
+    private fun updateCourse(appDAO: AppDAO) {
+        val id = 10
+
+        println("Finding course with id: $id")
+        val course = appDAO.findCourseById(id)
+
+        println("Updating course with id: $id")
+        course?.let { foundCourse ->
+            foundCourse.title = "Enjoy the Simple Things"
+
+            appDAO.update(foundCourse)
+
+            println("Done!")
         }
     }
 

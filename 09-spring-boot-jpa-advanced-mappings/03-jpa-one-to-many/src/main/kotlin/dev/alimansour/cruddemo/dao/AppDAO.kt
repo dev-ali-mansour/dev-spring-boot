@@ -13,4 +13,6 @@ interface AppDAO {
     fun findCoursesByInstructorId(instructorId: Int): List<Course>
     fun findInstructorByIdJoinFetch(instructorId: Int): Instructor?
     fun update(instructor: Instructor)
+    fun findCourseById(id: Int): Course?
+    fun update(course: Course)
 }
