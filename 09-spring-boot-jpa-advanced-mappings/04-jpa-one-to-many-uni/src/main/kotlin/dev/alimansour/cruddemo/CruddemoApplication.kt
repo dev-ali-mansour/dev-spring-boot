@@ -16,8 +16,19 @@ class CruddemoApplication {
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
 //            createCourseAndReviews(appDAO)
-            retrieveCourseAndReviews(appDAO)
+//            retrieveCourseAndReviews(appDAO)
+            deleteCourseAndReviews(appDAO)
         }
+    }
+
+    private fun deleteCourseAndReviews(appDAO: AppDAO) {
+        val id = 10
+
+        println("Deleting course with id: $id")
+
+        appDAO.deleteCourseById(id)
+
+        println("Done!")
     }
 
     private fun retrieveCourseAndReviews(appDAO: AppDAO) {
