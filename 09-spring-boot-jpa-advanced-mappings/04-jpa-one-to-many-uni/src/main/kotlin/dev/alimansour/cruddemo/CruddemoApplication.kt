@@ -14,18 +14,7 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(appDAO: AppDAO): CommandLineRunner {
         return CommandLineRunner {
-//            createInstructor(appDAO)
-//            findInstructor(appDAO)
-//            deleteInstructor(appDAO)
-//            findInstructorDetail(appDAO)
-//            deleteInstructorDetail(appDAO)
-//            createInstructorWithCourses(appDAO)
-//            findInstructorWithCourses(appDAO)
-//            findCoursesByInstructor(appDAO)
-//            findInstructorWithCoursesJoinFetch(appDAO)
-//            updateInstructor(appDAO)
-//            updateCourse(appDAO)
-            deleteCourse(appDAO)
+
         }
     }
 
