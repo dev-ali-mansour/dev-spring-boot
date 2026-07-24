@@ -22,8 +22,23 @@ class Course(
     @JoinColumn(name = "course_id")
     var reviews: MutableList<Review> = mutableListOf()
 
+    @ManyToMany(
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH],
+    )
+    @JoinTable(
+        name = "course_student",
+        joinColumns = [JoinColumn(name = "course_id")],
+        inverseJoinColumns = [JoinColumn(name = "student_id")]
+    )
+    var students: MutableList<Student> = mutableListOf()
+
     fun add(review: Review) {
         reviews.add(review)
+    }
+
+    fun addStudent(student: Student) {
+        students.add(student)
     }
 
     override fun toString(): String {
