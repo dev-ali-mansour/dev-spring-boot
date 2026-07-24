@@ -3,6 +3,7 @@ package dev.alimansour.cruddemo.dao
 import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
+import dev.alimansour.cruddemo.entity.Student
 import jakarta.persistence.EntityManager
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Repository
@@ -111,6 +112,17 @@ class AppDAOImpl(private val entityManager: EntityManager) : AppDAO {
                     "where c.id=:data", Course::class.java
         )
         query.setParameter("data", courseId)
+
+        return query.singleResult
+    }
+
+    override fun findStudentAndCoursesByStudentId(studentId: Int): Student? {
+        val query = entityManager.createQuery(
+            "select s from Student s " +
+                    "join fetch s.courses " +
+                    "where s.id=:data", Student::class.java
+        )
+        query.setParameter("data", studentId)
 
         return query.singleResult
     }

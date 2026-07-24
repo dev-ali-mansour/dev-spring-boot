@@ -3,6 +3,7 @@ package dev.alimansour.cruddemo.dao
 import dev.alimansour.cruddemo.entity.Course
 import dev.alimansour.cruddemo.entity.Instructor
 import dev.alimansour.cruddemo.entity.InstructorDetail
+import dev.alimansour.cruddemo.entity.Student
 
 interface AppDAO {
     fun save(instructor: Instructor)
@@ -19,4 +20,5 @@ interface AppDAO {
     fun save(course: Course)
     fun findCourseAndReviewsByCourseId(courseId: Int): Course?
     fun findCourseAndStudentsByCourseId(courseId: Int): Course?
+    fun findStudentAndCoursesByStudentId(studentId: Int): Student?
 }
