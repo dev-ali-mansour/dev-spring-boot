@@ -18,6 +18,13 @@ class Course(
     @JoinColumn(name = "instructor_id")
     var instructor: Instructor? = null
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    var reviews: MutableList<Review> = mutableListOf()
+
+    fun add(review: Review) {
+        reviews.add(review)
+    }
+
     override fun toString(): String {
         return "Course{id=$id, title='$title'}"
     }
