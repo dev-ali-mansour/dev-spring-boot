@@ -1,5 +1,5 @@
 package dev.alimansour.aopdemo.dao
 
 interface MembershipDAO {
-    fun addAccount()
+    fun addSillyMember()
 }

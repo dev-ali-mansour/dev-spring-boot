@@ -25,7 +25,7 @@ class AopdemoApplication {
     ) {
         accountDAO.addAccount()
 
-        membershipDAO.addAccount()
+        membershipDAO.addSillyMember()
     }
 }
 
