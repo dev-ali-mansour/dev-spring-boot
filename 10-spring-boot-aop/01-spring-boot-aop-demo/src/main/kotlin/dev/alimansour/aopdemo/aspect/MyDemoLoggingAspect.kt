@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Aspect
 @Component
 class MyDemoLoggingAspect {
-    @Before("execution(* add*(dev.alimansour.aopdemo.Account, ..))")
+    @Before("execution(* add*(..))")
     fun beforeAddAccountAdvice() {
         println("\n=====> Executing @Before advice on addAccount()")
     }
