@@ -25,8 +25,10 @@ class AopdemoApplication {
     ) {
         val account = Account()
         accountDAO.addAccount(account, true)
+        accountDAO.doWork()
 
         membershipDAO.addSillyMember()
+        membershipDAO.goToSleep()
     }
 }
 

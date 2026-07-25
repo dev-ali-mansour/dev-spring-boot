@@ -9,4 +9,8 @@ class MembershipDAOImpl : MembershipDAO {
         println("$javaClass: DOING MY WORK: ADDING A MEMBERSHIP ACCOUNT")
         return true
     }
+
+    override fun goToSleep() {
+        println("$javaClass: I'm going to sleep now...")
+    }
 }
