@@ -24,7 +24,7 @@ class AopdemoApplication {
         membershipDAO: MembershipDAO
     ) {
         val account = Account()
-        accountDAO.addAccount(account)
+        accountDAO.addAccount(account, true)
 
         membershipDAO.addSillyMember()
     }

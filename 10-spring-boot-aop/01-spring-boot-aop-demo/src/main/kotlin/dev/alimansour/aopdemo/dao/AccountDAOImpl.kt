@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class AccountDAOImpl : AccountDAO {
-    override fun addAccount(account: Account) {
+    override fun addAccount(account: Account, vipFlag: Boolean) {
         println("$javaClass: DOING MY WORK: ADDING AN ACCOUNT")
     }
 }
