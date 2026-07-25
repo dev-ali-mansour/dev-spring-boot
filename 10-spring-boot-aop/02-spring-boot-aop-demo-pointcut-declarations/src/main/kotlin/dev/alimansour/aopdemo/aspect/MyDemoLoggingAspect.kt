@@ -16,4 +16,9 @@ class MyDemoLoggingAspect {
     fun beforeAddAccountAdvice() {
         println("\n=====> Executing @Before advice on method")
     }
+
+    @Before("forDaoPackage()")
+    fun performApiAnalytics() {
+        println("\n=====> Performing API analytics")
+    }
 }
