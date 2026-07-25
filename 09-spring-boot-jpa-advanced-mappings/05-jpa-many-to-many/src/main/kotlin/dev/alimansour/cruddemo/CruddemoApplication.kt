@@ -16,8 +16,18 @@ class CruddemoApplication {
 //            findCourseAndStudents(appDAO)
 //            findStudentAndCourses(appDAO)
 //            addMoreCoursesForStudent(appDAO)
-            deleteCourse(appDAO)
+//            deleteCourse(appDAO)
+            deleteStudent(appDAO)
         }
+    }
+
+    private fun deleteStudent(appDAO: AppDAO) {
+        val id = 1
+
+        println("Deleting student with id: $id")
+        appDAO.deleteStudentById(id)
+
+        println("Done!")
     }
 
     private fun addMoreCoursesForStudent(appDAO: AppDAO) {
