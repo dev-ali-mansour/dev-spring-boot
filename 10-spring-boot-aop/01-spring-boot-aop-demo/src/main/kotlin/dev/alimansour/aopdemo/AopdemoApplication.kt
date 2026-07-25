@@ -17,6 +17,10 @@ class AopdemoApplication {
 
     private fun demoTheBeforeAdvice(accountDAO: AccountDAO) {
         accountDAO.addAccount()
+
+        println("\nLet's call it again\n")
+
+        accountDAO.addAccount()
     }
 }
 
