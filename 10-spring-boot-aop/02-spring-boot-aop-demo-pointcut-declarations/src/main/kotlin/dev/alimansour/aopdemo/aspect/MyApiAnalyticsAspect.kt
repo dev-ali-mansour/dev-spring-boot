@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Aspect
 @Component
 class MyApiAnalyticsAspect {
-    @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
+    @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressionsKt.forDaoPackageNoGetterSetter()")
     fun performApiAnalytics() {
         println("\n=====> Performing API analytics")
     }
