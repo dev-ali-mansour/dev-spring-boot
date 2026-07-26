@@ -16,4 +16,14 @@ class TrafficFortuneServiceImpl : TrafficFortuneService {
 
         return "Expected heavy traffic this morning"
     }
+
+    override fun getFortune(tripWire: Boolean): String {
+        if (tripWire) {
+            throw RuntimeException("Major accident! Highway is closed!")
+        }
+
+        return getFortune()
+    }
+
+
 }

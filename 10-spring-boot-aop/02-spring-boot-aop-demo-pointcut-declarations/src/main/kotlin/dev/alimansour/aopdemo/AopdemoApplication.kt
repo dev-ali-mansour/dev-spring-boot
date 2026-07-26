@@ -21,12 +21,26 @@ class AopdemoApplication {
 //            demoTheAfterReturningAdvice(accountDAO)
 //            demoTheAfterThrowingAdvice(accountDAO)
 //            demoTheAfterAdvice(accountDAO)
-            demoTheAroundAdvice(trafficFortuneService)
+//            demoTheAroundAdvice(trafficFortuneService)
+            demoTheAroundAdviceHandleException(trafficFortuneService)
         }
     }
 
+    private fun demoTheAroundAdviceHandleException(trafficFortuneService: TrafficFortuneService) {
+        println("\nMain Program: demoTheAroundAdviceHandleException")
+
+        println("Calling getFortune()")
+
+        val tripWire = true
+        val data = trafficFortuneService.getFortune(tripWire)
+
+        println("\nMyFortune is :$data")
+
+        println("Finished")
+    }
+
     private fun demoTheAroundAdvice(trafficFortuneService: TrafficFortuneService) {
-        println("\nMain Program: demoTheAroundAdvice()")
+        println("\nMain Program: demoTheAroundAdvice")
 
         println("Calling getFortune()")
 

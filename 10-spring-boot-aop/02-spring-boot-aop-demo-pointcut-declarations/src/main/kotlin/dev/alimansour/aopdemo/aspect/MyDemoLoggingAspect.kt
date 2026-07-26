@@ -19,7 +19,12 @@ class MyDemoLoggingAspect {
 
         val begin = System.currentTimeMillis()
 
-        val result = proceedingJoinPoint.proceed()
+        val result = runCatching {
+            proceedingJoinPoint.proceed()
+        }.getOrElse { t ->
+            println(t.message)
+            "Major accident! But no worries, your private AOP helicopter is on the way!"
+        }
 
         val end = System.currentTimeMillis()
 
