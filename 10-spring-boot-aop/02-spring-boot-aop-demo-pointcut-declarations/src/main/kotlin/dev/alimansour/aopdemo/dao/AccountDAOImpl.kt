@@ -25,6 +25,14 @@ class AccountDAOImpl : AccountDAO {
         }
 
     override fun findAccounts(): List<Account> {
+        return findAccounts(false)
+    }
+
+    override fun findAccounts(tripWire: Boolean): List<Account> {
+        if (tripWire) {
+            throw RuntimeException("No soup for you!!!")
+        }
+
         val accounts = mutableListOf<Account>()
 
         val account1 = Account(name = "John", level = "Silver")

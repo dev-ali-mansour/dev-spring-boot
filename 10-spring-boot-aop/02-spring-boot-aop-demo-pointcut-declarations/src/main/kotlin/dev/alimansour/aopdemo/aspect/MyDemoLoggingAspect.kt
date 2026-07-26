@@ -1,17 +1,32 @@
 package dev.alimansour.aopdemo.aspect
 
 import dev.alimansour.aopdemo.Account
+import org.apache.commons.logging.Log
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.AfterReturning
+import org.aspectj.lang.annotation.AfterThrowing
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Before
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
+import java.util.logging.Level
+import java.util.logging.Logger
 
 @Aspect
 @Component
 @Order(2)
 class MyDemoLoggingAspect {
+
+    @AfterThrowing(
+        pointcut = "execution(* dev.alimansour.aopdemo.dao.AccountDAO.findAccounts(..))",
+        throwing = "exc"
+    )
+    fun afterThrowingFindAccountsAdvice(joinPoint: JoinPoint, exc: Throwable) {
+        val method = joinPoint.signature.toShortString()
+        println("\n=====> Executing @AfterThrowing on method: $method")
+
+        println("The exception is : ${exc.message}")
+    }
 
     @AfterReturning(
         pointcut = "execution(* dev.alimansour.aopdemo.dao.AccountDAO.findAccounts(..))",
