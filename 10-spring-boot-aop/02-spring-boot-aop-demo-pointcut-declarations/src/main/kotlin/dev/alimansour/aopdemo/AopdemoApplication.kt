@@ -2,6 +2,7 @@ package dev.alimansour.aopdemo
 
 import dev.alimansour.aopdemo.dao.AccountDAO
 import dev.alimansour.aopdemo.dao.MembershipDAO
+import dev.alimansour.aopdemo.service.TrafficFortuneService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -12,14 +13,28 @@ class AopdemoApplication {
     @Bean
     fun commandLineRunner(
         accountDAO: AccountDAO,
-        membershipDAO: MembershipDAO
+        membershipDAO: MembershipDAO,
+        trafficFortuneService: TrafficFortuneService,
     ): CommandLineRunner {
         return CommandLineRunner {
 //            demoTheBeforeAdvice(accountDAO, membershipDAO)
 //            demoTheAfterReturningAdvice(accountDAO)
 //            demoTheAfterThrowingAdvice(accountDAO)
-            demoTheAfterAdvice(accountDAO)
+//            demoTheAfterAdvice(accountDAO)
+            demoTheAroundAdvice(trafficFortuneService)
         }
+    }
+
+    private fun demoTheAroundAdvice(trafficFortuneService: TrafficFortuneService) {
+        println("\nMain Program: demoTheAroundAdvice()")
+
+        println("Calling getFortune()")
+
+        val data = trafficFortuneService.getFortune()
+
+        println("\nMyFortune is :$data")
+
+        println("Finished")
     }
 
     private fun demoTheAfterAdvice(accountDAO: AccountDAO) {

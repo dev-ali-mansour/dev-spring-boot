@@ -2,6 +2,7 @@ package dev.alimansour.aopdemo.aspect
 
 import dev.alimansour.aopdemo.Account
 import org.aspectj.lang.JoinPoint
+import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.*
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
@@ -10,6 +11,24 @@ import org.springframework.stereotype.Component
 @Component
 @Order(2)
 class MyDemoLoggingAspect {
+
+    @Around("execution(* dev.alimansour.aopdemo.service.*.getFortune(..))")
+    fun aroundGetFortune(proceedingJoinPoint: ProceedingJoinPoint): Any {
+        val method = proceedingJoinPoint.signature.toShortString()
+        println("\n=====>>> Executing @Around on method: $method")
+
+        val begin = System.currentTimeMillis()
+
+        val result = proceedingJoinPoint.proceed()
+
+        val end = System.currentTimeMillis()
+
+        val duration = end - begin
+
+        println("\n=====>>> Duration: ${duration / 1000.0} seconds")
+
+        return result
+    }
 
     @After("execution(* dev.alimansour.aopdemo.dao.AccountDAO.findAccounts(..))")
     fun afterFinallyFindAccountAdvice(joinPoint: JoinPoint) {
