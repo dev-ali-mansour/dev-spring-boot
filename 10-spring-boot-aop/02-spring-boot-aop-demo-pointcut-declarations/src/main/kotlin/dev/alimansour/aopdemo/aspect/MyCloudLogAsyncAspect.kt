@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component
 class MyCloudLogAsyncAspect {
     @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressionsKt.forDaoPackageNoGetterSetter()")
     fun logToCloudAsync() {
-        println("\n=====> Logging to Cloud in async fashion")
+        println("\n=====>>> Logging to Cloud in async fashion")
     }
 }

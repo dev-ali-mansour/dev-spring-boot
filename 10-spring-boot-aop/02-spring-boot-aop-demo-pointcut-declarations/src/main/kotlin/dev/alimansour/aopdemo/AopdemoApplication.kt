@@ -17,8 +17,27 @@ class AopdemoApplication {
         return CommandLineRunner {
 //            demoTheBeforeAdvice(accountDAO, membershipDAO)
 //            demoTheAfterReturningAdvice(accountDAO)
-            demoTheAfterThrowingAdvice(accountDAO)
+//            demoTheAfterThrowingAdvice(accountDAO)
+            demoTheAfterAdvice(accountDAO)
         }
+    }
+
+    private fun demoTheAfterAdvice(accountDAO: AccountDAO) {
+        var accounts: List<Account>? = null
+
+        runCatching {
+            val tripWire = false
+            accounts = accountDAO.findAccounts(tripWire)
+        }.onFailure { exc ->
+            println("\n\nMain Program: ... caught exception: $exc")
+        }
+
+        println("\n\nMain Program: demoAfterThrowingAdvice")
+        println("----")
+
+        println(accounts)
+
+        println("\n")
     }
 
     private fun demoTheAfterThrowingAdvice(accountDAO: AccountDAO) {

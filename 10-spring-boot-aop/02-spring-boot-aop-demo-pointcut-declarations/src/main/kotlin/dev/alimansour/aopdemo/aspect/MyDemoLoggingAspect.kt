@@ -1,21 +1,21 @@
 package dev.alimansour.aopdemo.aspect
 
 import dev.alimansour.aopdemo.Account
-import org.apache.commons.logging.Log
 import org.aspectj.lang.JoinPoint
-import org.aspectj.lang.annotation.AfterReturning
-import org.aspectj.lang.annotation.AfterThrowing
-import org.aspectj.lang.annotation.Aspect
-import org.aspectj.lang.annotation.Before
+import org.aspectj.lang.annotation.*
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
-import java.util.logging.Level
-import java.util.logging.Logger
 
 @Aspect
 @Component
 @Order(2)
 class MyDemoLoggingAspect {
+
+    @After("execution(* dev.alimansour.aopdemo.dao.AccountDAO.findAccounts(..))")
+    fun afterFinallyFindAccountAdvice(joinPoint: JoinPoint) {
+        val method = joinPoint.signature.toShortString()
+        println("\n=====>>> Executing @After (finally) on method: $method")
+    }
 
     @AfterThrowing(
         pointcut = "execution(* dev.alimansour.aopdemo.dao.AccountDAO.findAccounts(..))",
@@ -23,9 +23,9 @@ class MyDemoLoggingAspect {
     )
     fun afterThrowingFindAccountsAdvice(joinPoint: JoinPoint, exc: Throwable) {
         val method = joinPoint.signature.toShortString()
-        println("\n=====> Executing @AfterThrowing on method: $method")
+        println("\n=====>>> Executing @AfterThrowing on method: $method")
 
-        println("The exception is : ${exc.message}")
+        println("\n=====>>> The exception is : ${exc.message}")
     }
 
     @AfterReturning(
@@ -34,13 +34,13 @@ class MyDemoLoggingAspect {
     )
     fun afterReturningFindAccountAdvice(joinPoint: JoinPoint, result: List<Account>) {
         val method = joinPoint.signature.toShortString()
-        println("\n=====> Executing @AfterReturning on method: $method")
+        println("\n=====>>> Executing @AfterReturning on method: $method")
 
-        println("\n=====> result is $result")
+        println("\n=====>>> result is $result")
 
         val updatedResult = convertAccountNamesToUpperCase(result)
 
-        println("\n=====> result is $updatedResult")
+        println("\n=====>>> result is $updatedResult")
     }
 
     private fun convertAccountNamesToUpperCase(result: List<Account>): List<Account> {
@@ -51,7 +51,7 @@ class MyDemoLoggingAspect {
 
     @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressionsKt.forDaoPackageNoGetterSetter()")
     fun beforeAddAccountAdvice(joinPoint: JoinPoint) {
-        println("\n=====> Executing @Before advice on method")
+        println("\n=====>>> Executing @Before advice on method")
 
         val methodSignature = joinPoint.signature
 
