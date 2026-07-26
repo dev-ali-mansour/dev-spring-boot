@@ -13,17 +13,19 @@ import org.springframework.stereotype.Component
 class MyDemoLoggingAspect {
 
     @Around("execution(* dev.alimansour.aopdemo.service.*.getFortune(..))")
-    fun aroundGetFortune(proceedingJoinPoint: ProceedingJoinPoint): Any {
+    fun aroundGetFortune(proceedingJoinPoint: ProceedingJoinPoint): Any? {
         val method = proceedingJoinPoint.signature.toShortString()
         println("\n=====>>> Executing @Around on method: $method")
 
         val begin = System.currentTimeMillis()
 
-        val result = runCatching {
-            proceedingJoinPoint.proceed()
-        }.getOrElse { t ->
+        var result: Any? = null
+        runCatching {
+            result = proceedingJoinPoint.proceed()
+        }.onFailure { t ->
             println(t.message)
-            "Major accident! But no worries, your private AOP helicopter is on the way!"
+
+            throw t
         }
 
         val end = System.currentTimeMillis()
