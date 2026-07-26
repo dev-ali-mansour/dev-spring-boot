@@ -15,8 +15,20 @@ class AopdemoApplication {
         membershipDAO: MembershipDAO
     ): CommandLineRunner {
         return CommandLineRunner {
-            demoTheBeforeAdvice(accountDAO, membershipDAO)
+//            demoTheBeforeAdvice(accountDAO, membershipDAO)
+            demoAfterReturningAdvice(accountDAO)
         }
+    }
+
+    private fun demoAfterReturningAdvice(accountDAO: AccountDAO) {
+        val accounts = accountDAO.findAccounts()
+
+        println("\n\nMain Program: demoAfterReturningAdvice")
+        println("----")
+
+        println(accounts)
+
+        println("\n")
     }
 
     private fun demoTheBeforeAdvice(

@@ -24,6 +24,20 @@ class AccountDAOImpl : AccountDAO {
             field = value
         }
 
+    override fun findAccounts(): List<Account> {
+        val accounts = mutableListOf<Account>()
+
+        val account1 = Account(name = "John", level = "Silver")
+        val account2 = Account(name = "Madhu", level = "Platinum")
+        val account3 = Account(name = "Luca", level = "Gold")
+
+        accounts.add(account1)
+        accounts.add(account2)
+        accounts.add(account3)
+
+        return accounts
+    }
+
     override fun addAccount(account: Account, vipFlag: Boolean) {
         println("$javaClass: DOING MY DB WORK: ADDING AN ACCOUNT")
     }
