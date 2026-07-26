@@ -2,20 +2,13 @@ package dev.alimansour.aopdemo.aspect
 
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Before
-import org.aspectj.lang.annotation.Pointcut
 import org.springframework.stereotype.Component
 
 @Aspect
 @Component
-class MyDemoLoggingAspect {
-
-
+class MyApiAnalyticsAspect {
     @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
-    fun beforeAddAccountAdvice() {
-        println("\n=====> Executing @Before advice on method")
+    fun performApiAnalytics() {
+        println("\n=====> Performing API analytics")
     }
-
-
-
-
 }
