@@ -22,6 +22,16 @@ class MyDemoLoggingAspect {
         println("\n=====> Executing @AfterReturning on method: $method")
 
         println("\n=====> result is $result")
+
+        val updatedResult = convertAccountNamesToUpperCase(result)
+
+        println("\n=====> result is $updatedResult")
+    }
+
+    private fun convertAccountNamesToUpperCase(result: List<Account>): List<Account> {
+        return result.map { account ->
+            account.copy(name = account.name.uppercase())
+        }
     }
 
     @Before("dev.alimansour.aopdemo.aspect.LuvAopExpressionsKt.forDaoPackageNoGetterSetter()")
