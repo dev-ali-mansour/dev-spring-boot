@@ -23,7 +23,7 @@ class AopdemoApplication {
         accountDAO: AccountDAO,
         membershipDAO: MembershipDAO
     ) {
-        val account = Account()
+        val account = Account(name = "Madhu", level = "Platinum")
         accountDAO.addAccount(account, true)
         accountDAO.doWork()
 
