@@ -27,6 +27,14 @@ class AopdemoApplication {
         accountDAO.addAccount(account, true)
         accountDAO.doWork()
 
+        accountDAO.name = "foobar"
+        accountDAO.serviceCode = "silver"
+
+        val name = accountDAO.name
+        val code = accountDAO.serviceCode
+
+        println("Name: $name, Service Code: $code")
+
         membershipDAO.addSillyMember()
         membershipDAO.goToSleep()
     }
